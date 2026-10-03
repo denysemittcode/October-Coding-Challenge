@@ -37,6 +37,11 @@ const stemOptions = [
     "assets/stem4.svg",
 ]
 
+const total =
+    eyeOptions.length *
+    mouthOptions.length *
+    bodyOptions.length *
+    stemOptions.length;
 
 button.addEventListener("click", function() {
     const randomEye=
@@ -60,9 +65,7 @@ button.addEventListener("click", function() {
     discovered.add(combo);
     counter.textContent =
   `You discovered ${discovered.size} pumpkins out ${total}`;
-}
-
-);
+});
 
 
 
