@@ -59,7 +59,7 @@ button.addEventListener("click", function() {
     const combo = `${randomEye}-${randomMouth}-${randomBody}-${randomStem}`;
     discovered.add(combo);
     counter.textContent =
-  `You discovered ${discovered.size} pumpkins`;
+  `You discovered ${discovered.size} pumpkins out of 256`;
 }
 
 );
