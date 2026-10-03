@@ -1,3 +1,6 @@
+const counter = document.querySelector(".counter");
+const discovered = new Set();
+
 const button = document.querySelector(".generate-button");
 
 const eyes = document.querySelector(".pumpkin-eyes");
@@ -53,5 +56,13 @@ button.addEventListener("click", function() {
     stem.src = stemOptions [randomStem];
 
 
-});
+    const combo = `${randomEye}-${randomMouth}-${randomBody}-${randomStem}`;
+    discovered.add(combo);
+    counter.textContent =
+  `You discovered ${discovered.size} pumpkins`;
+}
+
+);
+
+
 
