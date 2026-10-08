@@ -1,0 +1,852 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+
+  background: linear-gradient(
+    180deg,
+    #9681dc 0%,
+    #7767ae 24%,
+    #584b7b 46%,
+    #3b3156 67%,
+    #21192f 84%,
+    #09060f 100%
+  );
+
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+  color: white;
+
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+}
+
+.credits{
+  margin-top:20px;
+  font-size: 10px;
+  opacity: 20%;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.poison-lab {
+  width: min(100%, 950px);
+  height: 100vh;
+
+  margin: 0 auto;
+
+  padding: 28px 30px 22px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.intro {
+  width: 100%;
+
+  text-align: center;
+
+  flex-shrink: 0;
+}
+
+.day-label {
+  margin: 0 0 10px;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 1.7px;
+}
+
+.title {
+  width: min(390px, 52vw);
+
+  margin: 0 auto;
+}
+
+.intro-copy {
+  margin-top: 7px;
+  font-size:12px;
+}
+
+.section-heading {
+  margin: -10px;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+}
+
+.section-subtitle {
+  margin: 20px 0 0;
+
+  font-size: 15px;
+  line-height: 1.4;
+
+  opacity: 0.9;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content-area {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+
+
+/* =========================
+   BREW STATE
+========================= */
+
+.brew-state {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* =========================
+   INGREDIENTS
+========================= */
+
+.ingredients {
+  width: 100%;
+
+  margin-top: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 26px;
+
+  flex-wrap: nowrap;
+}
+
+.ingredient {
+  width: 48px;
+  height: 48px;
+
+  object-fit: contain;
+
+  cursor: grab;
+
+  user-select: none;
+  -webkit-user-drag: none;
+
+  touch-action: none;
+
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+.ingredient:hover {
+  transform:
+    translateY(-5px)
+    scale(1.04);
+}
+
+.ingredient:active {
+  cursor: grabbing;
+}
+
+
+/* ORIGINAL INGREDIENT WHILE GRABBING */
+
+.ingredient.is-grabbing {
+  opacity: 0.25;
+
+  transform: scale(0.96);
+}
+
+
+/* INGREDIENT ALREADY USED */
+
+.ingredient.used {
+  opacity: 0.22;
+
+  pointer-events: none;
+
+  filter: grayscale(0.35);
+}
+
+
+/* =========================
+   DRAGGED COPY
+========================= */
+
+.drag-ghost {
+  position: fixed;
+
+  z-index: 9999;
+
+  margin: 0;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.05);
+
+  transform-origin: center;
+
+  opacity: 0.95;
+
+  filter:
+    drop-shadow(
+      0 10px 10px
+      rgba(0, 0, 0, 0.18)
+    );
+
+  transition: none;
+}
+
+
+/* SUCCESSFUL DROP */
+
+.drag-ghost.dropping {
+  transition:
+    left 0.28s ease,
+    top 0.28s ease,
+    transform 0.28s ease,
+    opacity 0.28s ease;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.12);
+
+  opacity: 0;
+}
+
+
+/* MISSED DROP */
+
+.drag-ghost.returning {
+  transition:
+    left 0.22s ease,
+    top 0.22s ease,
+    transform 0.22s ease,
+    opacity 0.22s ease;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.9);
+
+  opacity: 0.35;
+}
+
+
+/* =========================
+   CAULDRON
+========================= */
+
+.cauldron-zone {
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cauldron {
+  position: relative;
+
+  width: 240px;
+
+  aspect-ratio: 217.1 / 170.8;
+}
+
+
+/* BACK */
+
+.cauldron-back {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  left: 0;
+  top: 0;
+
+  z-index: 1;
+}
+
+
+/* LIQUID */
+
+.cauldron-liquid {
+  position: absolute;
+
+  width: 80%;
+
+  left: 10%;
+  top: 8%;
+
+  z-index: 2;
+
+  transform-origin: center;
+}
+
+
+/* =========================
+   BUBBLES
+========================= */
+
+.bubbles {
+  position: absolute;
+
+  width: 68%;
+  height: 34%;
+
+  left: 16%;
+  top: -3%;
+
+  z-index: 3;
+
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+
+  width: 18px;
+
+  opacity: 0;
+}
+
+.bubble-one {
+  left: 18%;
+  bottom: 0;
+}
+
+.bubble-two {
+  left: 47%;
+  bottom: 5px;
+
+  width: 14px;
+}
+
+.bubble-three {
+  right: 14%;
+  bottom: 2px;
+
+  width: 12px;
+}
+
+
+/* =========================
+   STEAM
+========================= */
+
+.steam {
+  position: absolute;
+
+  width: 48px;
+
+  z-index: 3;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.steam-one {
+  left: 31%;
+  top: -10%;
+}
+
+.steam-two {
+  left: 51%;
+  top: -13%;
+}
+
+
+/* =========================
+   FRONT
+========================= */
+
+.cauldron-front {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  left: 0;
+  top: 0;
+
+  z-index: 4;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   ACTIVE CAULDRON
+========================= */
+
+.cauldron-zone.active
+.cauldron-liquid {
+  animation:
+    liquidPulse
+    0.55s
+    ease;
+}
+
+.cauldron-zone.active
+.bubble {
+  animation:
+    bubbleUp
+    1s
+    ease-out;
+}
+
+.cauldron-zone.active
+.bubble-two {
+  animation-delay: 0.1s;
+}
+
+.cauldron-zone.active
+.bubble-three {
+  animation-delay: 0.2s;
+}
+
+.cauldron-zone.active
+.steam {
+  animation:
+    steamRise
+    1.15s
+    ease-out;
+}
+
+.cauldron-zone.active
+.steam-two {
+  animation-delay: 0.12s;
+}
+
+
+/* =========================
+   TRACKERS
+========================= */
+
+.ingredient-progress {
+  margin-top: 18px;
+
+  text-align: center;
+}
+
+.progress-dots {
+  display: flex;
+  justify-content: center;
+
+  gap: 9px;
+
+  margin-bottom: 7px;
+}
+
+.progress-dot {
+  width: 11px;
+  height: 11px;
+
+  border:
+    1.5px solid
+    rgba(255, 255, 255, 0.75);
+
+  border-radius: 50%;
+}
+
+.progress-dot.filled {
+  background: #c2d952;
+
+  border-color: #c2d952;
+}
+
+.counter {
+  margin: 0;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 1.7px;
+}
+
+.discovery-counter {
+  margin: 10px 0 0;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 1.3px;
+
+  opacity: 0.65;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result-state {
+  width: 100%;
+
+  margin-top: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* RESULT ART */
+
+.poison-art {
+  position: relative;
+
+  width: 200px;
+
+  max-width: 55vw;
+}
+
+.poison-image {
+  width: 100%;
+}
+
+
+/* SPARKLES */
+
+.result-sparkle {
+  position: absolute;
+
+  width: 34px;
+
+  pointer-events: none;
+
+  animation:
+    sparkleFloat
+    2.4s
+    ease-in-out
+    infinite;
+}
+
+.sparkle-left {
+  left: -34px;
+  top: 25%;
+}
+
+.sparkle-right {
+  right: -34px;
+  top: 45%;
+
+  animation-delay: 0.45s;
+}
+
+
+/* DESCRIPTION */
+
+.poison-description {
+  max-width: 370px;
+
+  margin: 17px auto 0;
+
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+
+/* BUTTON */
+
+.brew-again {
+  margin-top: 17px;
+
+  padding: 11px 29px;
+
+  border:
+    2px solid
+    rgba(255, 255, 255, 0.95);
+
+  border-radius: 100px;
+
+  background: transparent;
+
+  color: white;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.brew-again:hover {
+  background: white;
+
+  color: #38284e;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes liquidPulse {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform:
+      scale(1.045, 0.94);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+
+@keyframes bubbleUp {
+
+  0% {
+    transform:
+      translateY(6px)
+      scale(0.55);
+
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translateY(-42px)
+      scale(1);
+
+    opacity: 0;
+  }
+
+}
+
+
+@keyframes steamRise {
+
+  0% {
+    transform:
+      translateY(8px)
+      scale(0.82);
+
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.55;
+  }
+
+  100% {
+    transform:
+      translateY(-36px)
+      scale(1);
+
+    opacity: 0;
+  }
+
+}
+
+
+@keyframes sparkleFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(0deg);
+  }
+
+  50% {
+    transform:
+      translateY(-8px)
+      rotate(8deg);
+  }
+
+}
+
+
+/* =========================
+   SHORT DESKTOP
+========================= */
+
+@media (max-height: 760px) and (min-width: 761px) {
+
+  .poison-lab {
+    padding-top: 18px;
+  }
+
+  .title {
+    width: 280px;
+  }
+
+  .ingredients {
+    margin-top: 18px;
+
+  }
+
+  .ingredient {
+    width: 46px;
+    height: 46px;
+  }
+
+  .cauldron-zone {
+    margin-top: 20px;
+  }
+
+  .cauldron {
+    width: 225px;
+  }
+
+  .ingredient-progress {
+    margin-top: 10px;
+  }
+
+}
+
+
+/* =========================
+   TABLET / MOBILE
+========================= */
+
+@media (max-width: 760px) {
+
+  body {
+    height: auto;
+
+    overflow-y: auto;
+  }
+
+  .poison-lab {
+    height: auto;
+    min-height: 100vh;
+
+    padding:
+      36px
+      20px
+      50px;
+  }
+
+  .title {
+    width: min(330px, 82vw);
+  }
+
+  .ingredients {
+    margin-top: 26px;
+
+    flex-wrap: wrap;
+
+    gap:
+      18px
+      24px;
+  }
+
+  .ingredient {
+    width: 76px;
+    height: 76px;
+  }
+
+  .cauldron {
+    width: 290px;
+
+    max-width: 82vw;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .ingredients {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    gap:
+      17px
+      12px;
+  }
+
+  .ingredient {
+    width: 68px;
+    height: 68px;
+
+    margin: 0 auto;
+  }
+
+  .cauldron {
+    width: 260px;
+  }
+
+}

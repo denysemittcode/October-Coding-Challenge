@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Day 05 Poison Lab</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="poison-lab">
+
+    <!-- HEADER -->
+
+    <header class="intro">
+
+      <p class="day-label">
+        DAY 05 SPOOKY CODING CHALLENGE
+      </p>
+
+      <img
+        src="assets/title.svg"
+        class="title"
+        alt="Poison Lab"
+      >
+
+      <div class="intro-copy">
+
+        <h2 class="section-heading">
+          Let's brew something
+        </h2>
+
+        <p class="section-subtitle">
+          Drag 3 ingredients into the cauldron.
+        </p>
+
+      </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+
+    <section class="content-area">
+
+      <!-- BREW STATE -->
+
+      <div class="brew-state">
+
+        <!-- INGREDIENTS -->
+
+        <section class="ingredients">
+
+          <img
+            src="assets/mushroom.svg"
+            class="ingredient"
+            data-name="mushroom"
+            alt="Mushroom"
+            draggable="false"
+          >
+
+          <img
+            src="assets/frog.svg"
+            class="ingredient"
+            data-name="frog"
+            alt="Frog"
+            draggable="false"
+          >
+
+          <img
+            src="assets/eye.svg"
+            class="ingredient"
+            data-name="eye"
+            alt="Eyeball"
+            draggable="false"
+          >
+
+          <img
+            src="assets/spider.svg"
+            class="ingredient"
+            data-name="spider"
+            alt="Spider"
+            draggable="false"
+          >
+
+          <img
+            src="assets/crystals.svg"
+            class="ingredient"
+            data-name="crystal"
+            alt="Crystal"
+            draggable="false"
+          >
+
+          <img
+            src="assets/skull.svg"
+            class="ingredient"
+            data-name="skull"
+            alt="Skull"
+            draggable="false"
+          >
+
+        </section>
+
+
+        <!-- CAULDRON -->
+
+        <section class="cauldron-zone">
+
+          <div class="cauldron">
+
+            <!-- BACK -->
+
+            <img
+              src="assets/cauldron1.svg"
+              class="cauldron-back"
+              alt="Cauldron"
+            >
+
+
+            <!-- LIQUID -->
+
+            <img
+              src="assets/cauldron-liquid.svg"
+              class="cauldron-liquid"
+              alt=""
+            >
+
+
+            <!-- BUBBLES -->
+
+            <div class="bubbles">
+
+              <img
+                src="assets/bubble.svg"
+                class="bubble bubble-one"
+                alt=""
+              >
+
+              <img
+                src="assets/bubble.svg"
+                class="bubble bubble-two"
+                alt=""
+              >
+
+              <img
+                src="assets/bubble.svg"
+                class="bubble bubble-three"
+                alt=""
+              >
+
+            </div>
+
+
+            <!-- STEAM -->
+
+            <div class="steam steam-one">
+              <img src="assets/steam1.svg" alt="">
+            </div>
+
+            <div class="steam steam-two">
+              <img src="assets/steam2.svg" alt="">
+            </div>
+
+
+            <!-- FRONT -->
+
+            <img
+              src="assets/cauldron-rim.svg"
+              class="cauldron-front"
+              alt=""
+            >
+
+          </div>
+
+        </section>
+
+
+        <!-- TRACKERS -->
+
+        <div class="ingredient-progress">
+
+          <div class="progress-dots">
+            <span class="progress-dot"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-dot"></span>
+          </div>
+
+          <p class="counter">
+            0/3 INGREDIENTS
+          </p>
+
+          <p class="discovery-counter">
+            You've discovered 0/20 unique potions
+          </p>
+
+        </div>
+
+<div class="byline">
+        <p class="credits">
+          Designed & coded by Denyse Mitterhofer
+        </p>
+
+      </div>
+
+      </div>
+
+
+      <!-- RESULT STATE -->
+
+      <div class="result-state hidden">
+
+        <div class="poison-art">
+
+          <img
+            src="assets/sparkle1.svg"
+            class="result-sparkle sparkle-left"
+            alt=""
+          >
+
+          <img
+            src="assets/poison1.svg"
+            class="poison-image"
+            alt="Poison bottle"
+          >
+
+          <img
+            src="assets/sparkle2.svg"
+            class="result-sparkle sparkle-right"
+            alt=""
+          >
+
+        </div>
+
+        <p class="poison-description">
+          Effects unknown.
+        </p>
+
+        <button
+          class="brew-again"
+          type="button"
+        >
+          BREW AGAIN
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
