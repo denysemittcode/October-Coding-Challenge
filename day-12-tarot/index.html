@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#344f90">
+  <title>Ask the Cards | Day 12</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="tarot-app">
+    <p class="eyebrow">DAY 12 / SPOOKY CODING CHALLENGE</p>
+
+    <div class="content-grid">
+      <section class="left-panel" aria-label="Ask the cards a question">
+        <header class="intro">
+          <h1>Ask the Cards</h1>
+          <p class="subtitle">for unsolicited advice...</p>
+        </header>
+        <form id="question-form" class="question-form">
+          <label for="question">What would you like to know?</label>
+          <input id="question" name="question" type="text" maxlength="200"
+            placeholder="Ask away!" autocomplete="off" required>
+          <button id="draw-button" class="sr-only" type="submit">Ask the Cards</button>
+        </form>
+      </section>
+
+      <section class="reading" aria-label="Very unhelpful tarot reading">
+        <button id="card-button" class="card-button" type="button" aria-label="Draw a tarot card">
+          <span class="card-stack" aria-hidden="true">
+            <img class="decorative-back" src="cards/_cover.jpg" alt="">
+            <span id="tarot-card" class="tarot-card">
+              <span class="card-inner">
+                <span class="card-face card-back"><img src="cards/_cover.jpg" alt=""></span>
+                <span class="card-face card-front"><img id="card-image" alt=""></span>
+              </span>
+            </span>
+          </span>
+        </button>
+        <p id="card-meaning" class="card-meaning" aria-live="polite"></p>
+        <p id="reading-status" class="reading-status" role="status" aria-live="polite">Type your question, then let the cards disappoint you.</p>
+        <button id="ask-again" class="ask-again" type="button" hidden>Ask another question</button>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p>Rider–Waite–Smith card imagery from <a href="https://steve-p.org/" target="_blank" rel="noopener noreferrer">Steve P.</a></p>
+    <p class="signature">Design, Coding and Sass by <a href="http://www.denysemitterhofer.com/" target="_blank">Denyse Mitterhofer</a></p>
+  </footer>
+</body>
+</html>
