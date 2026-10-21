@@ -9,5 +9,19 @@ body {
 }
 
 a {
-    color:rgb(101, 254, 101);
+    color:rgb(101, 254, 101);}
+
+h1 {
+    font-size: 26px;
 }
+
+.description {
+    font-size:16px;
+    max-width:280px;
+}
+
+.name {
+    font-size:12px;
+}
+
+@media (max-width: 480px) {}
